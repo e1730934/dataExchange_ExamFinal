@@ -3,7 +3,7 @@ const db = new sqlite3.Database('./database/db.sqlite3');
 
 exports.clientInfo =  (req, res) => {
     const clientId = req.params.id;
-    db.run(`SELECT * FROM clients WHERE id = ${clientId}`, (err, row) => {
+    db.get(`SELECT * FROM clients WHERE id = ${clientId}`, (err, row) => {
         if (err) {
             return res.status(500).json({
                 error: err
